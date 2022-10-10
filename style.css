@@ -1,0 +1,44 @@
+body{
+    background-color:	#001372;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 250%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+p{
+    color:#fbbe00;
+}
+.head p{
+    background-color: 	#e32e01;
+    color:	white;
+}
+
+.container{
+    position: fixed;
+    bottom: 0;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+}
+.container div{
+    display: flex;
+    padding: 40%;
+    
+    width: max-content;
+    gap:4vh;
+    
+}
+.container div button{
+    width: 10vh;
+    height:10vh;
+    border-radius: 50%;
+    font-size: 130%;
+    background-color:	#e32e01;
+    color:white;
+}

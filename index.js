@@ -1,25 +1,35 @@
-
-const options=["rock","paper","scissors"];
+const buttons=document.querySelectorAll("button");
+const game_result=document.querySelector(".won-lost");
+const robotOutput=document.querySelector(".computerOutput");
+const options=["✊","✋","✌️"];
 const choices=[
     ["tie","lost","won"],
     ["won","tie","lost"],
     ["lost","won","tie"]
 ]
-function user_input_filter(user_input_raw,options){
-    let user_input_filtered=0;
 
-    options.map(function (option,index){
+//to use current_option_num as user_input_filtered;
+
+
+for(let i=0;i<buttons.length;i++){
+    current_option_num=i;
+}
+
+function button_events(score){
+    let current_option_num=0;
+    for(let i=0;i<buttons.length;i++){
         
         
-        
-        if(option.length===user_input_raw.length){
-            user_input_filtered=index;
+        buttons[i].onclick=function(){
+            score.innerText=i;
             
-            
-        }
-    })
-    return user_input_filtered;
+        };
+        
+    }console.log(current_option_num);
+        
+      
     
+    return current_option_num;
 }
 
 function robot_choice_function(options){
@@ -32,13 +42,17 @@ function robot_choice_function(options){
 
 
 
+
+
 function round(){
-    var user_raw=prompt();
-    let user_filtered=user_input_filter(user_raw,options);
+    button_events(robotOutput)
+    let user_filtered=parseInt(robotOutput.textContent);
+    console.log(robotOutput.textContent)
     let robot_choice=robot_choice_function(options);
-    
+    console.log("hello world",user_filtered);
     const result=choices[user_filtered][robot_choice];
     
+    console.log(result);
     if(result==="won"){
         return [1,0,0];
     }else if(result==="lost"){
@@ -46,21 +60,17 @@ function round(){
     }else{
         return [0,0,2];
     }
+    
+}
+function run(self){
+    
+    let robot_choice=robot_choice_function(options);
+    let person_choice=self;
+    const result=choices[person_choice][robot_choice];
+    console.log(options[robot_choice],result);
+    game_result.innerText=result;
+    robotOutput.innerText=options[robot_choice];
+
 }
 
-function game_loop(){
-    let score=0
-    let computer_score=0;
-    for(var i=0;i<5;i++){
-        let both_scores=round();
-        score+=both_scores[0];
-        computer_score+=both_scores[1];
-        
-        choices_short=["won","lost","tied"];
-        let state=choices_short[both_scores[2]]
-        
-        console.log(`you ${state};your score:${score}; computer's score:${computer_score}`);
-    }
-}
-game_loop();
 
